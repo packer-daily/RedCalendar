@@ -41,6 +41,7 @@ typedef struct
     uint8_t speed;
 
     /* Status */
+    int16_t CurrentState;
     bool alive;
 
 } Ship;
@@ -116,10 +117,7 @@ void Spotting_Update(SpottingMeter* meter, const Ship* enemy, int8_t modifier);
  * as discussed for February and later
  * multi-ship encounters.
  */
-void Spotting_UpdateGroup(SpottingMeter* meter,
-    Ship enemies[],
-    uint8_t count,
-    int8_t modifier);
+void Spotting_UpdateGroup(SpottingMeter* meter, Ship enemies[], uint8_t count, int8_t modifier);
 
 /*
  * Returns hit probability percentage.
