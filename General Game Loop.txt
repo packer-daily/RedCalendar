@@ -1,0 +1,41 @@
+General Game Loop
+TITLE
+  ->
+MONTH_INTRO
+  ->
+PATROL
+  ->
+COMBAT
+  ->
+MONTH_COMPLETE
+  ->
+NEXT MONTH
+  ->
+VICTORY
+
+Any state
+  ->
+GAME_OVER
+
+Smaller State Summaries
+
+PATROL BOAT
+    move boat (smoothly)
+    ping submarine (3 seconds)
+        boat fires (if submarine ping > 5)
+            check if submarine dead
+                GAME_OVER
+            boat turns (if boat fires)
+
+SUBMARINE
+    poll sensors (smoothly)
+    updated submarine direction and speed
+        update submarine position
+    update depth
+        update oxygen (1 second)
+            (-1 for stationary, -2 if moving)
+    check firing
+        fire if applicable
+            check if enemies defeated
+                next month
+    loop
